@@ -1,0 +1,30 @@
+class Version {
+  int major, minor, revision, build
+  boolean release
+
+  String toString() {
+    "$major.$minor.$revision.$build${release ? '' : '-SNAPSHOT'}"
+  }
+}
+
+def versionPropsFile = file('version.properties')
+
+version = new Version()
+
+if (versionPropsFile.canRead()) {
+    def Properties versionProps = new Properties()
+
+    versionProps.load(new FileInputStream(versionPropsFile))
+
+    version.major     = versionProps['VERSION_MAJOR'].toInteger()
+    version.minor     = versionProps['VERSION_MINOR'].toInteger()
+    version.revision  = versionProps['VERSION_REVIS'].toInteger()
+    version.build     = versionProps['VERSION_BUILD'].toInteger()
+
+    //versionProps['VERSION_CODE']=code.toString()
+    //versionProps.store(versionPropsFile.newWriter(), null)
+
+}
+else {
+    throw new GradleException("Could not read version.properties!")
+}
