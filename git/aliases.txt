@@ -1,0 +1,2 @@
+git log --pretty=format:"%C(yellow)%h%Creset - %C(green)%an%Creset, %C(magenta)%ar%Creset : %s" --graph --decorate
+
