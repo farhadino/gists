@@ -1,2 +1,8 @@
-git log --pretty=format:"%C(yellow)%h%Creset - %C(green)%an%Creset, %C(magenta)%ar%Creset : %s" --graph --decorate
+[alias]
+        d = diff
+        dt = difftool
+        co = checkout
+        st = status
+        ci = commit
+        blog = log --pretty=format:'%C(yellow)%h%Creset - %C(green)%an%Creset, %C(magenta)%ar%Creset : %s' --graph
 
