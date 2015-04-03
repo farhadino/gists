@@ -1,0 +1,4 @@
+http://stackoverflow.com/questions/16112445/how-do-i-dynamically-define-a-function-to-call-with-ng-click-in-angularjs-direct
+
+=> http://jsfiddle.net/nkuDW/1/
+

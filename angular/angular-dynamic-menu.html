@@ -1,0 +1,51 @@
+<div ng-app = "myApp">
+<div ng-controller="MyCtrl">
+ <ul>
+     <p><my-directive field="fieldOne" label="'Field 1'" menu="menu"></my-directive></p>
+     <p><my-directive field="fieldTwo" label="'Field 2'" menu="menu"></my-directive></p>
+ </ul>
+    Hello, {{status}}!
+</div>
+</div>
+
+
+<script>
+var myApp = angular.module('myApp',[]);
+
+myApp.directive('myDirective', function($compile) {
+    return {
+        restrict: "E",
+        replace: true,
+        scope : {
+            field: '=',
+            label: '=',
+            menu: '='
+        },
+        link:  function (scope, element, attrs) {
+            element.html('{{label}}: <input ng-model="field"> <ul ng-repeat="item in menu"><li><a ng-click="item.func()">{{item.title}}</a></li></ul>');
+             $compile(element.contents())(scope);
+        }
+    }
+});
+//myApp.factory('myService', function() {});
+
+function MyCtrl($scope) {
+    $scope.status = 'You have not picked yet';
+    
+    $scope.ActionOne = function() {
+         $scope.status = "You picked Action 1";   
+     }    
+        
+    $scope.ActionTwo = function() {
+         $scope.status = "You picked Action 2";   
+     }     
+    $scope.menu = [
+        { "title" : "Action 1", "func" : $scope.ActionOne},
+        { "title" : "Action 2", "func" : $scope.ActionTwo},
+        ]
+    
+    $scope.fieldOne = "I am field 1";
+    $scope.fieldTwo = "I am field 2";
+               
+}
+</script>
