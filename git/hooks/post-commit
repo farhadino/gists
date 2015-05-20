@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# Automatic versioning based on date and number of commits on that day
+# Assuming existence of "version.properties" file in project root
+
+echo
+if [ -f .commit ]
+
+	then
+	rm .commit
+		
+	VERSION_DATE=`date +"%Y%m%d"`
+	COMMITS_TODAY=`git log --since=6am --pretty="oneline" | wc -l`
+	VERSION_BUILD=$((COMMITS_TODAY))
+
+	VERSION_PROPERTIES_DIR="src/main/resources"
+	VERSION_PROPERTIES_FILE="version.properties"
+	VERSION_PROPERTIES_PATH=$VERSION_PROPERTIES_DIR"/"$VERSION_PROPERTIES_FILE
+
+	sed -i "s/\(VERSION_DATE *= *\).*/\1$VERSION_DATE/" $VERSION_PROPERTIES_PATH
+	sed -i "s/\(VERSION_BUILD *= *\).*/\1$VERSION_BUILD/" $VERSION_PROPERTIES_PATH
+
+	file=`git diff --cached --name-status`
+
+	git add $VERSION_PROPERTIES_PATH
+	git commit --amend -C HEAD --no-verify
+fi
+exit
