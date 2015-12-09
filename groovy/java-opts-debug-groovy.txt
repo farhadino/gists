@@ -1,0 +1,5 @@
+-Dgroovy.grape.report.downloads=true
+-Divy.message.logger.level=4
+
+export JAVA_OPTS="$JAVA_OPTS -Dgroovy.grape.report.downloads=true"
+export JAVA_OPTS="$JAVA_OPTS -Divy.message.logger.level=4"
