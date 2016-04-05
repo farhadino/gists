@@ -4,7 +4,8 @@
   metadata-complete="true">
   <display-name> hello </display-name>
 
-    <!-- Session Timeout in minutes, -1 for no timeout?-->
+    <!-- Session Timeout in minutes, -1 for no timeout?
+    http://apache-tapestry-mailing-list-archives.1045711.n5.nabble.com/Change-default-session-timeout-interval-td5594150.html-->
   <session-config>
     <session-timeout>1</session-timeout>
  </session-config>
