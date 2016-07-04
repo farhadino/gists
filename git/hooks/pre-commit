@@ -1,10 +1,3 @@
 #!/bin/sh
-#
 
-VERSION_DATE=`date +"%m%d"`
-VERSION_BUILD=`git log --since=am --pretty="oneline" | wc -l`
-
-VERSION_PROPERTIES_FILE="version.properties"
-
-sed -i "s/\(VERSION_DATE *= *\).*/\1$VERSION_DATE/" $VERSION_PROPERTIES_FILE
-sed -i "s/\(VERSION_BUILD *= *\).*/\1$VERSION_BUILD/" $VERSION_PROPERTIES_FILE
+touch .commit

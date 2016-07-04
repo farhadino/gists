@@ -1,0 +1,21 @@
+db.webedi.aggregate( [
+  {
+    $match: {"details.DocumentType":"CommercialInvoice"}
+  },
+
+  {
+    $unwind: "$content.InvoiceDocument"
+  },
+
+  {
+    $unwind: "$content.InvoiceDocument.LineItem"
+  },
+
+  {
+    $group: {
+      _id: { ProductNetCalculationPriceBasis: "$content.InvoiceDocument.LineItem.LineItemPricing.ProductNetCalculationPriceBasis" },
+      count: { $sum: 1} 
+      } 
+  },
+
+] )

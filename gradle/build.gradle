@@ -1,0 +1,5 @@
+task printClasspath << {
+  (configurations.runtime.asPath =~ /(?<jar>[^:]+)/).each {match, jar ->
+    println jar
+  }
+}
