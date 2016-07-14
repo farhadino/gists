@@ -1,0 +1,1 @@
+#Acquire::http::proxy socks://localhost:24680;
